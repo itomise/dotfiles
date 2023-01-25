@@ -23,17 +23,6 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x54-0x120000-0x11</key>
-		<dict>
-			<key>Action</key>
-			<integer>61</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0x7f-0x100000-0x33</key>
 		<dict>
 			<key>Action</key>
@@ -698,6 +687,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>Monaco 12</string>
+			<key>Only The Default BG Color Uses Transparency</key>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -741,7 +732,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.41733710106382971</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
