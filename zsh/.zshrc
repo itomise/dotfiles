@@ -16,30 +16,10 @@ export PATH="$PATH:/Users/ryota.ito/.dotnet/tools"
 # pnpm
 export PNPM_HOME="/Users/ryota.ito/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-alias pn=pnpm
 # pnpm end
 
 # oh my zsh theme
 export ZSH_THEME="tjkirch"
-
-# alias
-alias c='clear'
-alias ll='ls -alF'
-alias la='ls -a'
-## cd
-alias ..="cd .."
-alias blg="cd ~/Documents/project/blog"
-alias blgf="cd ~/Documents/project/blog/frontend"
-alias blgb="cd ~/Documents/project/blog/backend"
-## git
-alias g='git'
-alias ga='git add'
-alias gb='git branch'
-alias gp='git push'
-alias gd='git diff'
-alias gf='git fetch'
-alias gs='git status'
-
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
