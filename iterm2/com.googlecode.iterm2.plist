@@ -743,11 +743,17 @@
 			<string>/Users/ryota.ito</string>
 		</dict>
 	</array>
+	<key>OptionClickMovesCursor</key>
+	<false/>
+	<key>PointerActions</key>
+	<dict/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 </dict>
 </plist>
