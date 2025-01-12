@@ -1,0 +1,96 @@
+# https://qiita.com/sfus/items/063797a1dd8fdc7d032f#%E5%90%84%E3%83%93%E3%83%A5%E3%83%BC%E8%A8%AD%E5%AE%9A
+
+# main view の左端にコミットIDを表示する
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+
+# utf-8 文字で画面描画する (~でトグル)
+set line-graphics = utf-8
+
+# マウスを有効にする (バグがあるので無効にする)
+# set mouse = true
+
+# デフォルトの bind generic G !git gc を無効化する
+bind generic G none
+
+bind generic g move-first-line
+bind generic G move-last-line
+
+# D でブランチを削除 (マージ済みブランチのみ. 強制削除(branch -D) は `!`) (refs-view)
+bind refs    D      ?git branch -d %(branch)
+
+# D でトラッキングされていないファイルを削除 (status-view)
+bind status  D      ?git clean -d -f -- %(file)
+
+# D で stash を削除 (`!` と同じ) (stash-view)
+bind stash   D      ?git stash drop %(stash)
+
+# D でファイルを削除 (tree-view)
+bind tree    D      ?git rm %(file)
+
+# x でトラッキングされていないファイルをすべて削除
+bind main    x      ?git clean -d -f
+bind status  x      ?git clean -d -f
+
+# x でマージ済みローカルブランチをすべて削除 (master/develop 除く)
+bind refs    x      ?sh -c "git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
+
+# リフレッシュするタイミング
+set refresh-mode = auto
+
+# カラー設定
+# diff-view で境界が見やすくなるように変更
+color  diff-header       default magenta
+color  diff-chunk        black   white
+
+# ^ で reset --soft
+bind generic ^      ?git reset --soft HEAD^
+
+# S で stash save
+bind generic S      ?git stash save -u "%(prompt Enter stash comment: )"
+
+# Y で stash pop
+bind diff    Y      ?git stash pop %(stash)
+bind stash   Y      ?git stash pop %(stash)
+
+# Alt-y で stash apply
+bind diff    <Esc>y ?git stash apply %(stash)
+bind stash   <Esc>y ?git stash apply %(stash)
+
+# H で reset --hard
+bind main    H      ?git reset --hard %(commit)
+bind diff    H      ?git reset --hard %(commit)
+bind refs    H      ?git reset --hard %(branch)
+
+# H で reset --hard HEAD (status-view)
+bind status  H      ?git reset --hard HEAD
+
+# M で merge
+bind main    M      ?git merge %(branch)
+bind diff    M      ?git merge %(branch)
+bind refs    M      ?git merge %(branch)
+bind main    <Esc>m ?git merge %(commit)
+bind diff    <Esc>m ?git merge %(commit)
+
+# R で rebase
+bind main    R      ?git rebase %(branch)
+bind diff    R      ?git rebase %(branch)
+bind refs    R      ?git rebase %(branch)
+bind main    <Esc>r ?git rebase %(commit)
+bind diff    <Esc>r ?git rebase %(commit)
+
+# I で rebase -i
+bind main    I      ?git rebase -i %(branch)
+bind diff    I      ?git rebase -i %(branch)
+bind refs    I      ?git rebase -i %(branch)
+bind main    <Esc>i ?git rebase -i %(commit)
+bind diff    <Esc>i ?git rebase -i %(commit)
+
+# U で pull
+bind generic U      ?git pull %(remote)
+
+# P で remote への push
+bind generic P      ?git push -u %(remote) %(repo:head)
+
+# create pr
+bind main    R      ?gh pr create
+bind main    V      ?gh pr view
