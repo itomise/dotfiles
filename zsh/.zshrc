@@ -1,25 +1,28 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-source $(brew --prefix nvm)/nvm.sh
+# alias
+alias g='git'
+alias gs='git status'
+alias gsw='git switch'
+alias gp='git push'
+alias c='clear'
+alias ..='cd ..'
+alias ...='cd ../..'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ryota.ito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ryota.ito/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ryota.ito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ryota.ito/google-cloud-sdk/completion.zsh.inc'; fi
+# github cli
+export GIT_EDITOR=vim
+export VISUAL=vim
+export EDITOR=vim
 
-# Dotnet tools 
-export PATH="$PATH:/Users/ryota.ito/.dotnet/tools"
 
-# pnpm
-export PNPM_HOME="/Users/ryota.ito/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+# prompt (pure) https://github.com/sindresorhus/pure
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+autoload -U promptinit; promptinit
+zstyle :prompt:pure:git:stash show yes
+zstyle :prompt:pure:git:fetch only_upstream yes
+# branch color
+zstyle :prompt:pure:path color '#FFF1D0'
+zstyle :prompt:pure:git:branch color '#F0C808'
+zstyle ':prompt:pure:prompt:success' color '#06AED5'
+zstyle ':prompt:pure:prompt:error' color '#DD1C1A'
 
-# oh my zsh theme
-export ZSH_THEME="tjkirch"
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+prompt pure
