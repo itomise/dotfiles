@@ -124,7 +124,7 @@ noremap <M-l> <C-w>l
 "save
 nmap <Leader>w :w<CR>
 "format
-nnoremap <leader>f :call FormatCode()<CR>
+nnoremap <leader>f :%!fmt<CR>
 
 "<M-t>で新規タブ
 nmap <M-t> :tabnew<CR>
