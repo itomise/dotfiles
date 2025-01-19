@@ -17,10 +17,6 @@ Plugin 'tpope/vim-fugitive'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-" markdown (manual)
-Plugin 'godlygeek/tabular'
-Plugin 'preservim/vim-markdown'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
