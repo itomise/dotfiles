@@ -747,6 +747,8 @@
 	<false/>
 	<key>PointerActions</key>
 	<dict/>
+	<key>ShowFullScreenTabBar</key>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
