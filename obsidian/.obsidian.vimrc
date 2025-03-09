@@ -1,5 +1,4 @@
 " Key mappings
-let mapleader=" "  " Set leader key to Space
 imap jj <Esc>      " Map jj to Escape in insert mode
 
 " Close current workspace
@@ -36,7 +35,3 @@ nmap ; :
 
 " System clipboard support
 set clipboard=unnamed
-
-" Yank to system clipboard
-nmap <leader>y "+y
-vmap <leader>y "+y
