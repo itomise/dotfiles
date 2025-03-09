@@ -36,7 +36,6 @@ nmap ; :
 
 " System clipboard support
 set clipboard=unnamed
-set clipboard+=unnamedplus
 
 " Yank to system clipboard
 nmap <leader>y "+y
