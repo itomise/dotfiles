@@ -667,6 +667,8 @@
 					<string>[1;5F</string>
 				</dict>
 			</dict>
+			<key>Load Shell Integration Automatically</key>
+			<true/>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
