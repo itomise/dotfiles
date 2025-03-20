@@ -162,6 +162,11 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 
 -- [[ Basic Keymaps ]]
+
+-- jj と jk で Insert mode から Normal mode に戻る
+vim.keymap.set('i', 'jj', '<ESC>', { desc = 'Exit insert mode with jj' })
+vim.keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
+
 --  See `:help vim.keymap.set()`
 
 -- Clear highlights on search when pressing <Esc> in normal mode
