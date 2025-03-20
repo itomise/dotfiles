@@ -26,3 +26,5 @@ zstyle ':prompt:pure:prompt:success' color '#06AED5'
 zstyle ':prompt:pure:prompt:error' color '#DD1C1A'
 
 prompt pure
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"

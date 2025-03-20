@@ -46,11 +46,10 @@ color  diff-chunk        black   white
 bind generic ^      ?git reset --soft HEAD^
 
 # S で stash save
-bind generic S      ?git stash save -u "%(prompt Enter stash comment: )"
+bind generic S      ?git stash push -u -m "%(prompt Enter stash comment: )"
 
 # Y で stash pop
-bind diff    Y      ?git stash pop %(stash)
-bind stash   Y      ?git stash pop %(stash)
+bind stash   P      ?git stash pop %(stash)
 
 # Alt-y で stash apply
 bind diff    <Esc>y ?git stash apply %(stash)
