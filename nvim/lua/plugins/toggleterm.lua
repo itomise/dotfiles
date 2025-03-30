@@ -1,30 +1,30 @@
 local function toggle_term()
-	local term = require("toggleterm.terminal").Terminal:new({})
-	term:toggle()
+  local term = require("toggleterm.terminal").Terminal:new({})
+  term:toggle()
 end
 
 local function toggle_tig()
-	local tig = require("toggleterm.terminal").Terminal:new({ cmd = "tig" })
-	tig:toggle()
+  local tig = require("toggleterm.terminal").Terminal:new({ cmd = "tig" })
+  tig:toggle()
 end
 
 local function config()
-	require("toggleterm").setup({
-		hidden = true,
-		direction = "float",
-		float_opts = {
-			border = "curved",
-		},
-	})
+  require("toggleterm").setup({
+    hidden = true,
+    direction = "float",
+    float_opts = {
+      border = "curved",
+    },
+  })
 end
 
 return {
-	"akinsho/toggleterm.nvim",
+  "akinsho/toggleterm.nvim",
 
-	module = { "toggleterm" },
-	keys = {
-		{ [[<C-w>n]], toggle_term, mode = "n" },
-		{ [[<C-w>t]], toggle_tig, mode = "n" },
-	},
-	config = config,
+  module = { "toggleterm" },
+  keys = {
+    { [[<C-w>n]], toggle_term, mode = "n" },
+    { [[<C-w>t]], toggle_tig, mode = "n" },
+  },
+  config = config,
 }
