@@ -8,9 +8,23 @@ local function toggle_tig()
   tig:toggle()
 end
 
+local function vertical_term()
+  local term = require("toggleterm.terminal").Terminal:new({
+    direction = "vertical",
+  })
+  term:toggle()
+end
+
 local function config()
   require("toggleterm").setup({
-    hidden = true,
+    size = function(term)
+      if term.direction == "horizontal" then
+        return 20
+      elseif term.direction == "vertical" then
+        return 50
+        -- return vim.o.columns * 0.4
+      end
+    end,
     direction = "float",
     float_opts = {
       border = "curved",
@@ -23,8 +37,9 @@ return {
 
   module = { "toggleterm" },
   keys = {
-    { [[<C-w>n]], toggle_term, mode = "n" },
+    { [[<C-w>f]], toggle_term, mode = "n" },
     { [[<C-w>t]], toggle_tig, mode = "n" },
+    { [[<C-w>h]], vertical_term, mode = "n" },
   },
   config = config,
 }

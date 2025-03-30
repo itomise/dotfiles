@@ -16,3 +16,5 @@ vim.keymap.set("n", "q", "<Nop>", { desc = "Disable q key in normal mode" })
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit Vim" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
+
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode with Escape" })
