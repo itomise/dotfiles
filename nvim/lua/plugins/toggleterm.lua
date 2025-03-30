@@ -21,14 +21,16 @@ local function config()
       if term.direction == "horizontal" then
         return 20
       elseif term.direction == "vertical" then
-        return 50
-        -- return vim.o.columns * 0.4
+        return 80
       end
     end,
     direction = "float",
     float_opts = {
       border = "curved",
     },
+    persist_size = true,
+    persist_mode = true,
+    auto_scroll = true,
   })
 end
 
