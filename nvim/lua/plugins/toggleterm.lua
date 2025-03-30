@@ -22,8 +22,8 @@ return {
 	"akinsho/toggleterm.nvim",
 	module = { "toggleterm" },
 	keys = {
-		{ [[<C-w>\]], toggle_term, mode = "n"},
-		{ [[<C-w>g]], toggle_tig, mode = "n"},
+		{ [[<C-w>n]], toggle_term, mode = "n"},
+		{ [[<C-w>t]], toggle_tig, mode = "n"},
 	},
 	config = config,
 }
