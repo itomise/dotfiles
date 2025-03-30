@@ -18,6 +18,10 @@ return {
           api.node.open.edit()
         end
 
+        -- default mappings
+        api.config.mappings.default_on_attach(bufnr)
+
+        -- custom mappings
         local opts = { noremap = true, silent = true, buffer = bufnr }
         vim.keymap.set("n", "h", collapse_or_parent, opts)
         vim.keymap.set("n", "l", edit_or_open, opts)
