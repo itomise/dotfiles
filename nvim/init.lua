@@ -18,7 +18,7 @@ vim.opt.number = true
 
 -- クリップボードを有効化 (schedule で遅延実行)
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamedplus"
 end)
 
 vim.opt.breakindent = true
@@ -36,12 +36,12 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 
 if not vim.g.vscode then
-	-- マウス有効化
-	vim.opt.mouse = "a"
+  -- マウス有効化
+  vim.opt.mouse = "a"
 
-	-- キーマップ設定を読み込む
-	require("keymaps")
+  -- キーマップ設定を読み込む
+  require("keymaps")
 
-	-- plugin
-	require("config.lazy")
+  -- plugin
+  require("config.lazy")
 end
