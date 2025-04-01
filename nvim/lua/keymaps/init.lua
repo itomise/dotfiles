@@ -5,6 +5,30 @@ vim.keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 -- 詳細は `:help hlsearch` を参照
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- 別ウィンドウで編集された内容を自動で反映する
+vim.opt.autoread = true
+
+-- ファイル変更を自動検出して更新を反映するための設定
+-- 定期的にバッファの変更を確認して更新
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then
+      vim.cmd("checktime")
+    end
+  end,
+})
+
+-- タイマーイベントを設定して定期的に checktime を実行
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.fn.timer_start(1000, function()
+      vim.cmd("checktime")
+      return 1000 -- 1秒ごとに実行を継続
+    end, { ["repeat"] = -1 }) -- 無限に繰り返す
+  end,
+})
+
 -- 診断キーマップ
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
