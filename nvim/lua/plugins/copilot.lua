@@ -5,6 +5,7 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        copilot_node_command = vim.fn.expand("~/.asdf/installs/nodejs/22.14.0/bin/node"),
         panel = {
           enabled = true,
           auto_refresh = true,
