@@ -27,9 +27,11 @@ bind stash   D      ?git stash drop %(stash)
 # D でファイルを削除 (tree-view)
 bind tree    D      ?git rm %(file)
 
-# x でトラッキングされていないファイルをすべて削除
+# x でトラッキングされていないファイルをすべて削除 (main-view)
 bind main    x      ?git clean -d -f
-bind status  x      ?git clean -d -f
+
+# x で全ての変更を取り消し (トラッキングされていないファイルを削除し、トラッキングされているファイルの変更を取り消す) (status-view)
+bind status  x      ?sh -c 'git checkout -- . && git clean -d -f'
 
 # x でマージ済みローカルブランチをすべて削除 (master/develop 除く)
 bind refs    x      ?sh -c "git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
