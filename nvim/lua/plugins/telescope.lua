@@ -11,7 +11,30 @@ return {
       },
     },
     keys = {
-      { "<leader>ff", "<cmd>Telescope git_files<cr>",             desc = "Find files (git_files)" },
+      {
+        "<leader>ff",
+        function()
+          local cwd = vim.fn.expand("%:p:h")
+
+          -- git repo かどうか判定
+          local is_git = vim.v.shell_error == 0
+
+          if is_git then
+            require("telescope.builtin").find_files({
+              prompt_title = "Git files (from CWD)",
+              cwd = cwd,
+              find_command = { "git", "-C", cwd, "ls-files" },
+            })
+          else
+            require("telescope.builtin").find_files({
+              prompt_title = "All files (no git)",
+              cwd = cwd,
+              hidden = true,
+            })
+          end
+        end,
+        desc = "Find files (Git-aware from current dir)",
+      },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",             desc = "Live grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",               desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",             desc = "Help tags" },
@@ -26,14 +49,6 @@ return {
       defaults = {
         -- 検索結果のパス表示設定
         path_display = { "truncate" },
-        -- 特定のディレクトリやファイルを検索対象から除外
-        file_ignore_patterns = {
-          ".DS_Store",
-          ".git/",
-          "node_modules/",
-          "storybook%-static/",
-          "build/",
-        },
         sorting_strategy = "ascending",
         layout_config = {
           horizontal = {
