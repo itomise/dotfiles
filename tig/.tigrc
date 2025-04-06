@@ -18,8 +18,8 @@ bind generic G move-last-line
 # D でブランチを削除 (マージ済みブランチのみ. 強制削除(branch -D) は `!`) (refs-view)
 bind refs    D      ?git branch -d %(branch)
 
-# D でトラッキングされていないファイルを削除 (status-view)
-bind status  D      ?git clean -d -f -- %(file)
+# D でファイルの変更を取り消し（untracked なら削除、tracked なら checkout）(status-view)
+bind status  D      ?sh -c 'if git ls-files --error-unmatch %(file) > /dev/null 2>&1; then git checkout -- %(file); else git clean -f -- %(file); fi'
 
 # D で stash を削除 (`!` と同じ) (stash-view)
 bind stash   D      ?git stash drop %(stash)
