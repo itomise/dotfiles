@@ -31,7 +31,8 @@ return {
           ".DS_Store",
           ".git/",
           "node_modules/",
-          "storybook-static/",
+          "storybook%-static/",
+          "build/",
         },
         sorting_strategy = "ascending",
         layout_config = {

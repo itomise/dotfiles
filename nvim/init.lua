@@ -34,6 +34,7 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.confirm = true
+vim.opt.swapfile = false
 
 if not vim.g.vscode then
   -- マウス有効化
