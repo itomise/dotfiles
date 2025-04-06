@@ -28,6 +28,7 @@ return {
           extra_filetypes = { "css", "scss", "less", "tsx", "typescriptreact" },
         }),
       },
+      timeout_ms = 5000,
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
