@@ -70,4 +70,11 @@ require("mason-lspconfig").setup_handlers({
       },
     })
   end,
+  
+  -- F#の設定
+  ["fsautocomplete"] = function()
+    require("lspconfig").fsautocomplete.setup({
+      on_attach = on_attach,
+    })
+  end,
 })

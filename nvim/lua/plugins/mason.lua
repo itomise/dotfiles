@@ -16,6 +16,7 @@ return {
           "ts_ls",
           "eslint",
           "hls",
+          "fsautocomplete",
         },
         automatic_installation = true,
       })
