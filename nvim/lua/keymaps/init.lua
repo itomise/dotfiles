@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     vim.fn.timer_start(1000, function()
       vim.cmd("checktime")
-      return 1000 -- 1秒ごとに実行を継続
+      return 1000             -- 1秒ごとに実行を継続
     end, { ["repeat"] = -1 }) -- 無限に繰り返す
   end,
 })
@@ -35,6 +35,12 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- NvimTree focus on current file
+vim.keymap.set("n", "<C-g>", function()
+  local api = require("nvim-tree.api")
+  api.tree.find_file({ open = true, focus = true })
+end, { desc = "Focus current file in nvim-tree" })
 
 vim.keymap.set("n", "q", "<Nop>", { desc = "Disable q key in normal mode" })
 
