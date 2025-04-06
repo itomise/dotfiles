@@ -10,7 +10,12 @@ return {
     dependencies = { "neovim/nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" }, -- 利用するLSPサーバーを指定（例としてlua, python）
+        ensure_installed = {
+          "lua_ls",
+          "pyright",
+          "tsserver",
+          "hls",
+        },
         automatic_installation = true,
       })
     end,

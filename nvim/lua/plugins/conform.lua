@@ -15,10 +15,10 @@ return {
     },
     opts = {
       formatters_by_ft = {
-        lua = { "stylua" },
-        typescript = { "prettier" },
-        javascript = { "prettier" },
-        css = { "prettier" },
+        -- lua = { "stylua" },
+        -- typescript = { "prettier" },
+        -- javascript = { "prettier" },
+        -- css = { "prettier" },
         markdown = { "prettier" },
       },
       format_on_save = {

@@ -8,6 +8,7 @@ local on_attach = function(_, bufnr)
   -- keybind
   buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap(bufnr, "n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_set_keymap(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
   buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap(bufnr, "n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap(bufnr, "n", "<leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -31,6 +32,30 @@ require("mason-lspconfig").setup_handlers({
             checkThirdParty = false,
           },
           telemetry = { enable = false },
+        },
+      },
+    })
+  end,
+
+  -- TypeScriptの設定
+  ["tsserver"] = function()
+    require("lspconfig").tsserver.setup({
+      on_attach = on_attach,
+      settings = {
+        completions = {
+          completeFunctionCalls = true,
+        },
+      },
+    })
+  end,
+
+  -- Haskellの設定
+  ["hls"] = function()
+    require("lspconfig").hls.setup({
+      on_attach = on_attach,
+      settings = {
+        haskell = {
+          formattingProvider = "ormolu", -- ormoluフォーマッター使用
         },
       },
     })
