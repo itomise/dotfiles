@@ -39,8 +39,8 @@ return {
 
   module = { "toggleterm" },
   keys = {
-    { [[<C-w>f]], toggle_term, mode = "n" },
-    { [[<C-w>t]], toggle_tig, mode = "n" },
+    { [[<C-w>f]], toggle_term,   mode = "n" },
+    { [[<C-w>t]], toggle_tig,    mode = "n" },
     { [[<C-w>h]], vertical_term, mode = "n" },
   },
   config = config,

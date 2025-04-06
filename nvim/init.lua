@@ -1,8 +1,8 @@
 -- インデント設定
 vim.opt.expandtab = true -- タブをスペースに変換
-vim.opt.shiftwidth = 2 -- インデント幅を2に設定
-vim.opt.tabstop = 2 -- タブ文字の表示幅を2に設定
-vim.opt.softtabstop = 2 -- タブキーを押したときのスペースの数を2に設定
+vim.opt.shiftwidth = 2   -- インデント幅を2に設定
+vim.opt.tabstop = 2      -- タブ文字の表示幅を2に設定
+vim.opt.softtabstop = 2  -- タブキーを押したときのスペースの数を2に設定
 
 -- シンタックスを有効化
 vim.cmd("syntax enable")
