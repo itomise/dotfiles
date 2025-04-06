@@ -44,4 +44,7 @@ if not vim.g.vscode then
 
   -- plugin
   require("config.lazy")
+
+  -- LSP設定
+  require("lsp")
 end
