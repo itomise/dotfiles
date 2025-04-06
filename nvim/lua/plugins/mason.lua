@@ -13,7 +13,8 @@ return {
         ensure_installed = {
           "lua_ls",
           "pyright",
-          "tsserver",
+          "ts_ls",
+          "eslint",
           "hls",
         },
         automatic_installation = true,

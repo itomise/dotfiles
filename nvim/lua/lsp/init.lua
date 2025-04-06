@@ -38,13 +38,23 @@ require("mason-lspconfig").setup_handlers({
   end,
 
   -- TypeScriptの設定
-  ["tsserver"] = function()
-    require("lspconfig").tsserver.setup({
+  ["ts_ls"] = function()
+    require("lspconfig").ts_ls.setup({
       on_attach = on_attach,
       settings = {
         completions = {
           completeFunctionCalls = true,
         },
+      },
+    })
+  end,
+
+  ["eslint"] = function()
+    require("lspconfig").eslint.setup({
+      on_attach = on_attach,
+      cmd = { "vscode-eslint-language-server", "--stdio" },
+      settings = {
+        format = { enable = true },
       },
     })
   end,
