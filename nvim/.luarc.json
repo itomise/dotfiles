@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "Lua.diagnostics.globals": ["vim"],
+  "Lua.workspace.checkThirdParty": false,
+  "Lua.workspace.library": [
+    "${3rd}/luv/library",
+    "${3rd}/busted/library",
+    "${3rd}/luassert/library",
+    "${3rd}/luv/library"
+  ],
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.maxPreload": 2000,
+  "Lua.workspace.preloadFileSize": 1000
+}
