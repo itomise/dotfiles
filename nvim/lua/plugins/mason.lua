@@ -25,4 +25,13 @@ return {
   {
     "neovim/nvim-lspconfig",
   },
+  -- F# plugin moved from ionide.lua
+  {
+    "ionide/Ionide-vim",
+    lazy = true,
+    ft = { "fs", "fsi", "fsx" },
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+  },
 }
