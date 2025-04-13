@@ -48,6 +48,7 @@ return {
             gs.blame_line({ full = true })
           end, { desc = "Blame line" })
           map("n", "<leader>gp", gs.preview_hunk, { desc = "Preview hunk" })
+          map("n", "<leader>gr", gs.reset_hunk, { desc = "Reset hunk" })
           map("n", "<leader>gd", gs.diffthis, { desc = "Diff this" })
           map("n", "<leader>gD", function()
             gs.diffthis("~")
