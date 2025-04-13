@@ -1,5 +1,8 @@
 -- jj で Insert mode から Normal mode に戻る
 vim.keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
+vim.keymap.set("i", "っj", "<ESC>", { desc = "Exit insert mode with jj" })
+vim.keymap.set("i", "っっj", "<ESC>", { desc = "Exit insert mode with jj" })
+vim.keymap.set("i", "っっっj", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- ノーマルモードで <Esc> を押すと検索のハイライトをクリア
 -- 詳細は `:help hlsearch` を参照
