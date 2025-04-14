@@ -5,6 +5,8 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        -- FIXME: node 22 未満で実行すると copilot が対応してないので、絶対パスで指定している状態
+        -- 22 未満で実行される状況が修正できたら消す
         copilot_node_command = vim.fn.expand("~/.asdf/installs/nodejs/22.14.0/bin/node"),
         panel = {
           enabled = true,
