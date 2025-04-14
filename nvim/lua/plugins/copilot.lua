@@ -23,7 +23,7 @@ return {
           hide_during_completion = true,
           debounce = 75,
           keymap = {
-            accept = "<C-g><C-l>",
+            accept = "<C-l>",
             accept_word = "<C-g><C-w>",
             accept_line = false,
             next = "<C-g><C-n>",

@@ -9,7 +9,6 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 vim.keymap.set("n", "q", "<Nop>", { desc = "Disable q key in normal mode" })
 
-vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit Vim" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 
 -- ノーマルモードで <Esc> を押すと検索のハイライトをクリア
@@ -32,13 +31,14 @@ vim.keymap.set("n", "_", function()
 end, { desc = "resize horizontal +5" })
 
 if not vim.g.vscode then
+  vim.keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit Vim" })
   -- window move
   vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
   vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
   vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
   vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-  vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode with Escape" })
+  vim.keymap.set("t", "<ESC><ESC>", [[<C-\><C-n>]], { desc = "Exit terminal mode with Escape" })
 
   -- 別ウィンドウで編集された内容を自動で反映する
   vim.opt.autoread = true
@@ -75,5 +75,10 @@ else
   vim.keymap.set("n", "<C-l>", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
 
   -- comment out
-  vim.keymap.set({ "n", "v" }, "gc", "<cmd>call VSCodeNotify('editor.action.commentLine')<CR>")
+  vim.keymap.set("n", "gc", "<cmd>call VSCodeNotify('editor.action.commentLine')<CR>")
+  vim.keymap.set("v", "gc", "<cmd>call VSCodeNotify('editor.action.commentLine')<CR>")
+
+  vim.keymap.set("n", "<leader>q", "<cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>")
+  -- copilot
+  vim.keymap.set("i", "<C-l>", "<cmd>call VSCodeNotify('github.copilot.acceptCursorPanelSolution')<CR>")
 end
