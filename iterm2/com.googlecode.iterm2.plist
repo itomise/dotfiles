@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CopySelection</key>
-	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>67389C45-6E27-40AD-BFB1-C134CE4CB8E7</string>
 	<key>GlobalKeyMap</key>
@@ -43,19 +41,6 @@
 			<integer>32</integer>
 			<key>Text</key>
 			<string></string>
-		</dict>
-		<key>0xd-0x20000-0x24</key>
-		<dict>
-			<key>Action</key>
-			<integer>12</integer>
-			<key>Keycode</key>
-			<integer>13</integer>
-			<key>Modifiers</key>
-			<integer>131072</integer>
-			<key>Text</key>
-			<string>\n</string>
-			<key>Version</key>
-			<integer>1</integer>
 		</dict>
 		<key>0xf700-0x300000</key>
 		<dict>
@@ -682,8 +667,6 @@
 					<string>[1;5F</string>
 				</dict>
 			</dict>
-			<key>Load Shell Integration Automatically</key>
-			<true/>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -764,14 +747,10 @@
 	<false/>
 	<key>PointerActions</key>
 	<dict/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
-	<key>ToolbeltTools</key>
-	<array>
-		<string>Command History</string>
-		<string>Jobs</string>
-		<string>Recent Directories</string>
-	</array>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
