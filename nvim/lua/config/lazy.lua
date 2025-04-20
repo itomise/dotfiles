@@ -45,7 +45,8 @@ require("lazy").setup({
     },
   },
   checker = {
-    enabled = true, -- プラグインのアップデートを自動的にチェック
+    -- automatically check for plugin updates
+    enabled = true,
   },
   diff = {
     cmd = "delta",

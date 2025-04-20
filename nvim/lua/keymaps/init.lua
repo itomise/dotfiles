@@ -4,14 +4,12 @@ vim.keymap.set("i", "っj", "<ESC>", { desc = "Exit insert mode with jj" })
 vim.keymap.set("i", "っっj", "<ESC>", { desc = "Exit insert mode with jj" })
 vim.keymap.set("i", "っっっj", "<ESC>", { desc = "Exit insert mode with jj" })
 
--- 診断キーマップ
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 vim.keymap.set("n", "q", "<Nop>", { desc = "Disable q key in normal mode" })
 
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 
--- ノーマルモードで <Esc> を押すと検索のハイライトをクリア
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("v", "p", '"0p', { silent = true })
