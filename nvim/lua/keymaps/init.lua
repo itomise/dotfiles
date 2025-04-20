@@ -7,6 +7,10 @@ vim.keymap.set("i", "っっっj", "<ESC>", { desc = "Exit insert mode with jj" }
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 vim.keymap.set("n", "q", "<Nop>", { desc = "Disable q key in normal mode" })
+vim.keymap.set("n", "Q", "q")
+
+vim.keymap.set("x", "<leader>rr", 'y:%s/<C-r><C-r>"//g<Left><Left>', { desc = "Replace buffer word" })
+vim.keymap.set("n", "<leader>rr", 'yiw:%s/<C-r><C-r>"//g<Left><Left>', { desc = "Replace buffer word" })
 
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 
