@@ -14,6 +14,10 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 -- ノーマルモードで <Esc> を押すと検索のハイライトをクリア
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("v", "p", '"0p', { silent = true })
+
+vim.keymap.set("n", "<leader>*", "cgn")
+
 -- window (vertical)
 vim.keymap.set("n", "=", function()
   vim.cmd("vertical resize -5")

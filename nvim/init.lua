@@ -7,16 +7,12 @@ vim.opt.softtabstop = 2
 -- シンタックスを有効化
 vim.cmd("syntax enable")
 
--- カラースキームを設定
--- vim.cmd('colorscheme tokyonight')  -- または他のカラースキーム
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- 行番号を表示
 vim.opt.number = true
 
--- クリップボードを有効化 (schedule で遅延実行)
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.breakindent = true
@@ -34,9 +30,6 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 vim.opt.swapfile = false
 
--- キーマップ設定を読み込む
-require("keymaps")
-
 vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#553311" })
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
@@ -45,14 +38,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- keymaps
+require("keymaps")
+
 if vim.g.vscode then
-  vim.opt.clipboard = "unnamedplus"
+  -- plugin
+  require("config.vscode-lazy")
 else
   vim.opt.mouse = "a"
 
   -- plugin
   require("config.lazy")
-
   -- LSP設定
   require("lsp")
 end
