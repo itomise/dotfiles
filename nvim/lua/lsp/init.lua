@@ -17,8 +17,11 @@ end
 -- mason-lspconfigと連携して設定を適用
 require("mason-lspconfig").setup_handlers({
   function(server_name)
-    lspconfig[server_name].setup({
-      on_attach = on_attach,
-    })
+    -- fsautocompleteは無効化し、Ionide-vimプラグインを使用
+    if server_name ~= "fsautocomplete" then
+      lspconfig[server_name].setup({
+        on_attach = on_attach,
+      })
+    end
   end,
 })

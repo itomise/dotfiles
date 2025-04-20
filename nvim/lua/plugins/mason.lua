@@ -16,6 +16,7 @@ return {
           "ts_ls",
           "eslint",
           "hls",
+          "fsautocomplete",
         },
         automatic_installation = true,
       })
@@ -24,13 +25,8 @@ return {
   {
     "neovim/nvim-lspconfig",
   },
-  -- F# plugin moved from ionide.lua
+  -- F# plugin
   {
     "ionide/Ionide-vim",
-    lazy = true,
-    ft = { "fs", "fsi", "fsx" },
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
   },
 }
