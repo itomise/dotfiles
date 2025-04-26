@@ -21,6 +21,8 @@ vim.keymap.set("s", "p", '"0p', { silent = true })
 
 vim.keymap.set("n", "<leader>*", "cgn")
 
+vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
+
 -- window (vertical)
 vim.keymap.set("n", "=", function()
   vim.cmd("vertical resize -5")
