@@ -14,6 +14,7 @@ return {
           "lua_ls",
           "pyright",
           "ts_ls",
+          "denols",
           "eslint",
           "hls",
           "fsautocomplete",
