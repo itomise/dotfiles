@@ -10,7 +10,4 @@ if vim.g.vscode then
 else
   -- plugin
   require("config.lazy")
-  -- lsp setting
-  require("lsp")
 end
-
