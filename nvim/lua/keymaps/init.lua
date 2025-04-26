@@ -17,6 +17,7 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("v", "p", '"0p', { silent = true })
+vim.keymap.set("s", "p", '"0p', { silent = true })
 
 vim.keymap.set("n", "<leader>*", "cgn")
 

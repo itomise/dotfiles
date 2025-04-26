@@ -12,7 +12,7 @@ vim.g.maplocalleader = "\\"
 -- display row number
 vim.opt.number = true
 
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamed,unnamedplus"
 
 vim.opt.breakindent = true
 vim.opt.undofile = true
