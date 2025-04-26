@@ -29,6 +29,14 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 vim.opt.swapfile = false
 
+-- コメント自動挿入を無効化
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
+})
+
 -- highlight
 vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#553311" })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -41,4 +49,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 if not vim.g.vscode then
   vim.opt.mouse = "a"
 end
-
