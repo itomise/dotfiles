@@ -7,6 +7,23 @@ return {
     end,
   },
   {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    lazy = true,
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "prettier", -- markdown formatter
+          "stylua",   -- lua formatter
+        },
+        auto_update = true,
+        run_on_start = true,
+      })
+    end,
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
     config = function()
