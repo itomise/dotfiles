@@ -1,15 +1,41 @@
 return {
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
-  dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
+  {
+    lazy = true,
+    "folke/noice.nvim",
+    event = { "VeryLazy" },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("noice").setup({
+        routes = {
+          {
+            filter = {
+              event = "notify",
+              find = "No information available",
+            },
+            opts = { skip = true },
+          },
+          {
+            filter = {
+              event = "msg_show",
+              kind = "",
+              find = "書込み",
+            },
+            opts = { skip = true },
+          },
+          {
+            filter = {
+              event = "msg_show",
+              kind = "emsg",
+              find = "E382: 'buftype'",
+            },
+            opts = { skip = true },
+          },
+        },
+      })
+    end,
   },
 }
