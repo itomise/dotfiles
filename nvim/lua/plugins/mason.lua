@@ -59,11 +59,6 @@ return {
       -- mason-lspconfigと連携して設定を適用
       require("mason-lspconfig").setup_handlers({
         function(server_name)
-          -- fsautocompleteは無効化し、Ionide-vimプラグインを使用
-          if server_name == "fsautocomplete" then
-            return
-          end
-
           -- deno と ts_ls の競合を解決
           local node_root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
           local is_deno_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
@@ -85,9 +80,5 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-  },
-  -- F# plugin
-  {
-    "ionide/Ionide-vim",
   },
 }
