@@ -37,6 +37,9 @@ setopt hist_reduce_blanks
 
 setopt print_eight_bit
 
+# trash for nvim
+export PATH="/opt/homebrew/opt/trash/bin:$PATH"
+
 # fzf history
 function fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
