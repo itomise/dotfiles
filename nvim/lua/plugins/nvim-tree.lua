@@ -30,6 +30,8 @@ return {
         local opts = { noremap = true, silent = true, buffer = bufnr }
         vim.keymap.set("n", "h", collapse_or_parent, opts)
         vim.keymap.set("n", "l", edit_or_open, opts)
+
+        vim.keymap.set("n", "d", api.fs.trash, opts)
       end,
     })
   end,
