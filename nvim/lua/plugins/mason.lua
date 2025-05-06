@@ -36,6 +36,7 @@ return {
           "eslint",
           "hls",
           "fsautocomplete",
+          "haskell-language-server",
         },
         automatic_installation = true,
       })
