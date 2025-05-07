@@ -16,7 +16,8 @@ return {
       require("mason-tool-installer").setup({
         ensure_installed = {
           "prettier", -- markdown formatter
-          "stylua",   -- lua formatter
+          "stylua", -- lua formatter
+          "terraform_fmt", -- terraform formatter
         },
         auto_update = true,
         run_on_start = true,
@@ -37,6 +38,7 @@ return {
           "hls",
           "fsautocomplete",
           "haskell-language-server",
+          "terraform-ls",
         },
         automatic_installation = true,
       })
