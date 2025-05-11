@@ -17,6 +17,10 @@ return {
       sources = {
         null_ls.builtins.formatting.prettier.with({
           filetypes = { "typescriptreact", "typescript", "json" },
+          prefer_local = "node_modules/.bin",
+          cwd = function(params)
+            return vim.fn.expand("%:p:h")
+          end,
         }),
         null_ls.builtins.formatting.stylelint.with({
           filetypes = { "typescriptreact" },
