@@ -2,14 +2,14 @@
 -- Suppresses "unused variable/argument" warnings
 std = {
   globals = {
-    "vim",        -- Neovim API
-    "assert",     -- For tests
-    "describe",   -- For tests
-    "it",         -- For tests
-    "before_each",-- For tests
+    "vim", -- Neovim API
+    "assert", -- For tests
+    "describe", -- For tests
+    "it", -- For tests
+    "before_each", -- For tests
     "after_each", -- For tests
-    "pending",    -- For tests
-    "teardown",   -- For tests
+    "pending", -- For tests
+    "teardown", -- For tests
   },
 }
 
@@ -34,6 +34,7 @@ cache = true
 
 -- Don't warn when accessing undefined fields of global vim
 files["lua/**/*.lua"] = {
-  globals = {"vim"},
-  read_globals = {"vim"},
+  globals = { "vim" },
+  read_globals = { "vim" },
 }
+

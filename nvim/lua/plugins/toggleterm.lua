@@ -46,9 +46,9 @@ return {
 
   module = { "toggleterm" },
   keys = {
-    { [[<leader>tf]], toggle_term,     mode = "n", desc = "Toggle terminal" },
-    { [[<leader>tt]], toggle_tig,      mode = "n", desc = "Toggle tig" },
-    { [[<leader>tv]], vertical_term,   mode = "n", desc = "Toggle vertical terminal" },
+    { [[<leader>tf]], toggle_term, mode = "n", desc = "Toggle terminal" },
+    { [[<leader>tt]], toggle_tig, mode = "n", desc = "Toggle tig" },
+    { [[<leader>tv]], vertical_term, mode = "n", desc = "Toggle vertical terminal" },
     { [[<leader>th]], horizontal_term, mode = "n", desc = "Toggle horizontal terminal" },
   },
   config = config,

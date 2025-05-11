@@ -16,7 +16,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- vim.keymap.set("v", "p", '"0p', { silent = true })
 -- vim.keymap.set("s", "p", '"0p', { silent = true })
---
+
 vim.keymap.set("n", "<leader>*", "cgn")
 
 vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
@@ -56,10 +56,10 @@ if not vim.g.vscode then
         return diag.message -- 本文だけを表示
       end,
     },
-    signs = true,             -- signcolumn にアイコン
+    signs = true, -- signcolumn にアイコン
     underline = true,
     update_in_insert = false, -- 挿入モードでは更新しない
-    severity_sort = true,     -- 深刻度で並べ替え
+    severity_sort = true, -- 深刻度で並べ替え
     float = {
       border = "rounded",
       source = "always", -- 常に LSP 名を表示
@@ -93,9 +93,9 @@ if not vim.g.vscode then
   vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_group,
     callback = function(args)
-      local bufnr    = args.buf
+      local bufnr = args.buf
       local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
-      local set      = vim.keymap.set
+      local set = vim.keymap.set
 
       set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", lsp_opts, { desc = "Goto definition" }))
       set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", lsp_opts, { desc = "Goto implementation" }))
@@ -125,7 +125,7 @@ if not vim.g.vscode then
     callback = function()
       vim.fn.timer_start(1000, function()
         vim.cmd("checktime")
-        return 1000             -- 1秒ごとに実行を継続
+        return 1000 -- 1秒ごとに実行を継続
       end, { ["repeat"] = -1 }) -- 無限に繰り返す
     end,
   })

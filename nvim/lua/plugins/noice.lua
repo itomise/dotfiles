@@ -21,16 +21,8 @@ return {
           {
             filter = {
               event = "msg_show",
-              kind = "",
-              find = "書込み",
-            },
-            opts = { skip = true },
-          },
-          {
-            filter = {
-              event = "msg_show",
               kind = "emsg",
-              find = "E382: 'buftype'",
+              find = "E382: Cannot write, 'buftype' option is set",
             },
             opts = { skip = true },
           },

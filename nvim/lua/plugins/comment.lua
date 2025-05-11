@@ -1,8 +1,8 @@
 return {
   "numToStr/Comment.nvim",
   keys = {
-    { "gc",  mode = { "n", "x" } },
-    { "gb",  mode = { "n", "x" } },
+    { "gc", mode = { "n", "x" } },
+    { "gb", mode = { "n", "x" } },
     { "gcc", mode = "n" },
   },
   config = function()
