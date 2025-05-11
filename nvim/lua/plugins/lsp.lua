@@ -34,6 +34,7 @@ return {
     },
     config = function()
       local lspconfig = require("lspconfig")
+      local util = require("lspconfig.util")
 
       lspconfig.lua_ls.setup({
         settings = {
@@ -42,6 +43,7 @@ return {
       })
 
       lspconfig.denols.setup({
+        root_dir = util.root_pattern("deno.json", "deno.jsonc"),
         root_markers = { "deno.json", "deno.jsonc", "deps.ts" },
         workspace_required = true,
         init_options = {
@@ -51,6 +53,7 @@ return {
       })
 
       lspconfig.ts_ls.setup({
+        root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json"),
         root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
         workspace_required = true,
       })
