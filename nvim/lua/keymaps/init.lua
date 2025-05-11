@@ -4,8 +4,6 @@ vim.keymap.set("i", "っj", "<ESC>", { desc = "Exit insert mode with jj" })
 vim.keymap.set("i", "っっj", "<ESC>", { desc = "Exit insert mode with jj" })
 vim.keymap.set("i", "っっっj", "<ESC>", { desc = "Exit insert mode with jj" })
 
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
 vim.keymap.set("n", "q", "<Nop>", { desc = "Disable q key in normal mode" })
 vim.keymap.set("n", "Q", "q")
 
@@ -48,6 +46,65 @@ if not vim.g.vscode then
   vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
   vim.keymap.set("t", "<ESC><ESC>", [[<C-\><C-n>]], { desc = "Exit terminal mode with Escape" })
+
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = "●", -- ● <message>
+      spacing = 2,
+      source = false, -- ソース名は不要
+      format = function(diag)
+        return diag.message -- 本文だけを表示
+      end,
+    },
+    signs = true,             -- signcolumn にアイコン
+    underline = true,
+    update_in_insert = false, -- 挿入モードでは更新しない
+    severity_sort = true,     -- 深刻度で並べ替え
+    float = {
+      border = "rounded",
+      source = "always", -- 常に LSP 名を表示
+      header = "Diagnostics",
+      prefix = "",
+    },
+  })
+
+  ---------------------------------------------------------------------
+  -- 自動フロートポップアップ（カーソル停止時）------------------------
+  ---------------------------------------------------------------------
+  vim.o.updatetime = 500 -- CursorHold を 250ms で発火
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+      -- diagnostic があればフロートを表示、なければ無視
+      if not vim.b.disable_diag_hover then
+        vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
+      end
+    end,
+  })
+
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Prev diagnostic" }))
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
+  vim.keymap.set("n", "gq", vim.diagnostic.setloclist, vim.tbl_extend("force", opts, { desc = "Populate quickfix" }))
+
+  ---------------------------------------------------------------------
+  -- LSP Attach 時のバッファローカルキーマップ ------------------------
+  ---------------------------------------------------------------------
+  local lsp_group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true })
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = lsp_group,
+    callback = function(args)
+      local bufnr    = args.buf
+      local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
+      local set      = vim.keymap.set
+
+      set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", lsp_opts, { desc = "Goto definition" }))
+      set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", lsp_opts, { desc = "Goto implementation" }))
+      set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", lsp_opts, { desc = "Goto references" }))
+      set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", lsp_opts, { desc = "Hover" }))
+      set("n", "gn", vim.lsp.buf.rename, vim.tbl_extend("force", lsp_opts, { desc = "Rename symbol" }))
+      set("n", "ga", vim.lsp.buf.code_action, vim.tbl_extend("force", lsp_opts, { desc = "Code action" }))
+    end,
+  })
 
   -- 別ウィンドウで編集された内容を自動で反映する
   vim.opt.autoread = true
