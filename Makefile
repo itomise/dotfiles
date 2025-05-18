@@ -2,10 +2,15 @@
 
 CONFIG_SRC_DIR := $(CURDIR)/.config
 
+# Dotfiles list (src -> dst)
+DOTFILES := \
+	gitconfig:$(HOME)/.gitconfig
+
 .PHONY: install install-config
 
 # Default task
-install: install-config
+
+install: install-config install-dotfiles
 	@command -v trash > /dev/null || brew install trash
 
 # -----------------------------------------------------------------------------
@@ -42,3 +47,28 @@ install-config:
 	  echo "→ Linking $$target -> $$dir"; \
 	  ln -s "$$dir" "$$target"; \
 	done
+
+# -----------------------------------------------------------------------------
+# Link individual dotfiles (./<src>) to destination ($HOME/.*)
+# -----------------------------------------------------------------------------
+.PHONY: install-dotfiles link-dotfile
+
+install-dotfiles:
+	@echo "Linking individual dotfiles"
+	@$(foreach df,$(DOTFILES),$(MAKE) --no-print-directory link-dotfile src=$(firstword $(subst :, ,$(df))) dst=$(word 2,$(subst :, ,$(df)));)
+
+# Internal target: create/replace symlink
+link-dotfile:
+	@src="$(src)"; dst="$(dst)"; \ 
+	if [ ! -e "$$src" ]; then echo "⛔ $$src does not exist"; exit 1; fi; \ 
+	if [ -L "$$dst" ] && [ "$$src" = "$$(readlink $$dst | sed 's|^$(CURDIR)/||')" ]; then \ 
+	  echo "✓ $$dst already linked"; \ 
+	elif [ -e "$$dst" ]; then \ 
+	  backup="$$dst.bak.$$(date +%s)"; \ 
+	  echo "⚠ $$dst exists, backing up to $$backup"; \ 
+	  mv "$$dst" "$$backup"; \ 
+	  ln -s "$(CURDIR)/$$src" "$$dst"; \ 
+	else \ 
+	  echo "→ Linking $$dst -> $(CURDIR)/$$src"; \ 
+	  ln -s "$(CURDIR)/$$src" "$$dst"; \ 
+	fi
