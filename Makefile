@@ -3,8 +3,13 @@
 CONFIG_SRC_DIR := $(CURDIR)/.config
 
 # Dotfiles list (src -> dst)
+# Map of managed dotfiles in the form "<src>:<dst>".
+# `src` is relative to the repo root.
+#
+# gitconfig is stored as gitconfig/.gitconfig (easier to keep dot-file hidden
+# from ls output in the repo root).
 DOTFILES := \
-	gitconfig:$(HOME)/.gitconfig
+	gitconfig/.gitconfig:$(HOME)/.gitconfig
 
 .PHONY: install install-config
 
