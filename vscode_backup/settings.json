@@ -1,129 +1,90 @@
 {
-  "vim.leader": "<space>",
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.easymotion": true,
-  "vim.visualstar": true,
-  "vim.hlsearch": true,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["u"],
-      "commands": [
-        {
-          "command": "undo"
-        }
-      ]
-    },
-    {
-      "before": ["<C-r>"],
-      "commands": [
-        {
-          "command": "redo"
-        }
-      ]
-    },
-    {
-      "before": ["x"],
-      "after": ["\"", "_", "x"]
-    },
-    {
-      "before": ["s"],
-      "after": ["\"", "_", "s"]
-    },
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    {
-      "before": ["n"],
-      "after": ["n", "z", "z"]
-    },
-    {
-      "before": ["N"],
-      "after": ["N", "z", "z"]
-    },
-    {
-      "before": ["*"],
-      "after": ["*", "z", "z"]
-    },
-    {
-      "before": ["#"],
-      "after": ["#", "z", "z"]
-    },
-    {
-      "before": ["<Enter>"],
-      "commands": ["editor.action.insertLineAfter"]
-    },
-    {
-      "before": ["<Leader>", "c"],
-      "commands": [
-        {
-          "command": "editor.action.commentLine"
-        }
-      ]
-    },
-    {
-      "before": ["<Leader>", "w"],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.files.save",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["<Leader>", "q"],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.closeActiveEditor",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["<Leader>", "x"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.action.formatDocument",
-          "args": []
-        }
-      ]
-    },
-    {
-      "before": ["<Leader>", "l"],
-      "after": ["$"]
-    },
-    {
-      "before": ["<Leader>", "h"],
-      "after": ["^"]
-    },
-    {
-      "before": ["<Leader>", "m"],
-      "after": ["%"]
-    },
-    {
-      "before": ["<Leader>", "z"],
-      "commands": [":noh"]
-    }
-  ],
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    },
-    {
-      "before": [";", ";"],
-      "commands": ["editor.action.triggerSuggest"]
-    }
-  ],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
+  "editor.suggestSelection": "first",
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
-  }
+  },
+  "files.associations": {
+    "*.tsx": "typescriptreact"
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.next/**": true,
+    "**/node_modules/**": true,
+    "**/storybook-static/**": true
+  },
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": false,
+    "plaintext": true,
+    "scminput": false,
+    "yaml": true
+  },
+  "githubPullRequests.createOnPublishBranch": "never",
+  "githubPullRequests.pullBranch": "never",
+  "haskell.manageHLS": "GHCup",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.host": "localhost",
+  "playwright.reuseBrowser": true,
+  "search.exclude": {
+    "**/.next/": true,
+    "**/node_modules": true,
+    "**/node_modules/**": true
+  },
+  "security.promptForLocalFileProtocolHandling": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
+  },
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "typescript.preferences.jsxAttributeCompletionStyle": "none",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+      "args": [],
+      "command": "vscode-neovim.escape"
+    }
+  },
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+  "vsicons.dontShowNewVersionMessage": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.commandCenter": true,
+  "workbench.colorCustomizations": {
+    "list.inactiveSelectionBackground": "#58543a"
+  },
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 5,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.list.defaultFindMode": "filter",
+  "workbench.list.keyboardNavigation": "simple",
+  "workbench.list.typeNavigationMode": "trigger",
+  "workbench.startupEditor": "none"
 }

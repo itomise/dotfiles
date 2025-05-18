@@ -1,64 +1,70 @@
 [
-  // vim
-  // 新規ファイル作成
+  { "key": "ctrl+shift+enter", "command": "workbench.action.terminal.focus" },
   {
-    "key": "shift+cmd+n",
-    "command": "explorer.newFile"
+    "key": "ctrl+shift+enter",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
   },
-  // 新規フォルダ作成
+  { "key": "ctrl+shift+j", "command": "workbench.action.terminal.focusNext" },
   {
-    "key": "shift+cmd+m",
-    "command": "explorer.newFolder"
-  },
-  // dでファイルを削除
-  {
-    "key": "d",
-    "command": "deleteFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    "key": "ctrl+shift+k",
+    "command": "workbench.action.terminal.focusPrevious"
   },
   {
-    "key": "alt+cmd+backspace",
-    "command": "-deleteFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
-  },
-  // rでファイルのリネーム
-  {
-    "key": "r",
-    "command": "renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.newInActiveWorkspace"
   },
   {
-    "key": "enter",
-    "command": "-renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  // vで分割して開く
-  {
-    "key": "v",
-    "command": "explorer.openToSide",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  // ファイルのコピー
-  {
-    "key": "y",
-    "command": "filesExplorer.copy",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  // ファイルのペースト
-  {
-    "key": "p",
-    "command": "filesExplorer.paste",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  // shift+y で相対パスをコピー
-  {
-    "key": "shift+y",
-    "command": "copyRelativeFilePath",
-    "when": "!editorFocus"
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.terminal.kill"
   },
   {
-    "key": "shift+alt+cmd+c",
-    "command": "-copyRelativeFilePath",
-    "when": "!editorFocus"
+    "key": "ctrl+shift+.",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+[IntlRo]",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+shift+,",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+shift+[Minus]",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+[Minus]",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "shift+alt+g v",
+    "command": "gitlens.views.branches.focus"
+  },
+  {
+    "key": "shift+alt+g c",
+    "command": "git.checkout"
+  },
+  {
+    "key": "shift+alt+g s",
+    "command": "git.stash"
+  },
+  {
+    "key": "shift+alt+g p",
+    "command": "git.stashPop"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "gitlens.copyRemoteFileUrlToClipboard"
+  },
+  {
+    "key": "ctrl+shift+cmd+c",
+    "command": "gitlens.copyRemoteFileUrlWithoutRange"
+  },
+  {
+    "key": "cmd+r",
+    "command": "fsharp.scriptrunner.run",
+    "when": "editorLangId == 'fsharp' && resourceExtname == '.fsx'"
   }
 ]
