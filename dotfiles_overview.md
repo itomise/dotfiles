@@ -6,6 +6,8 @@
 
 ```
 dotfiles/
+├── home/                           # ホームディレクトリ向け設定ファイル
+│   └── .gitconfig                  # Git設定ファイル
 ├── iterm2/
 │   └── com.googlecode.iterm2.plist  # iTerm2設定ファイル
 ├── nvim/
