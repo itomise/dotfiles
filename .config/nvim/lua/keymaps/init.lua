@@ -17,7 +17,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- vim.keymap.set("v", "p", '"0p', { silent = true })
 -- vim.keymap.set("s", "p", '"0p', { silent = true })
 
-vim.keymap.set("n", "<leader>*", "cgn")
+vim.keymap.set("n", "<leader>*", "*''cgn")
 
 vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
 

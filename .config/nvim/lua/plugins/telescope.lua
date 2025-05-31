@@ -49,6 +49,16 @@ return {
     },
     opts = {
       defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
         -- 検索結果のパス表示設定
         path_display = { "truncate" },
         sorting_strategy = "ascending",
