@@ -8,6 +8,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias gss='git stash push -u'
 alias gsp='git stash pop'
+alias v='vim .'
 
 # github cli
 export GIT_EDITOR=vim
