@@ -38,7 +38,7 @@ return {
 
         vim.lsp.buf.format({
           bufnr = args.buf,
-          timeout_ms = 1000,
+          timeout_ms = 5000,
           async = false,
         })
       end,
