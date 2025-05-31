@@ -3,11 +3,11 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp", -- LSP用の補完ソース
-      "hrsh7th/cmp-buffer", -- バッファ用の補完ソース
-      "hrsh7th/cmp-path", -- パス補完ソース
-      "hrsh7th/cmp-cmdline", -- コマンドライン用補完
-      "L3MON4D3/LuaSnip", -- スニペットエンジン
+      "hrsh7th/cmp-nvim-lsp",     -- LSP用の補完ソース
+      "hrsh7th/cmp-buffer",       -- バッファ用の補完ソース
+      "hrsh7th/cmp-path",         -- パス補完ソース
+      "hrsh7th/cmp-cmdline",      -- コマンドライン用補完
+      "L3MON4D3/LuaSnip",         -- スニペットエンジン
       "saadparwaiz1/cmp_luasnip", -- スニペット用の補完ソース
     },
     config = function()
