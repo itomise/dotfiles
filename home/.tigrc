@@ -93,7 +93,9 @@ bind diff    <Esc>i ?git rebase -i %(commit)
 bind generic U      ?git pull %(remote)
 
 # P で remote への push
-bind generic P      ?git push -u %(remote) %(repo:head)
+bind status P      ?git push -u %(remote) %(repo:head)
+
+bind main   P      ?git pull
 
 # create pr
 bind main    R      ?gh pr create
