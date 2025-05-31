@@ -67,6 +67,8 @@ bind status  H      ?git reset --hard HEAD
 
 # commit amend
 bind status  A      ?git commit --amend
+# add all to staging 
+bind status  a      ?git add --all
 
 # M で merge
 bind main    M      ?git merge %(branch)
