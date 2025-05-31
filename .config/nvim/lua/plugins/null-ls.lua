@@ -38,9 +38,6 @@ return {
         null_ls.builtins.formatting.stylelint.with({
           filetypes = { "typescriptreact" },
         }),
-        null_ls.builtins.formatting.stylua.with({
-          filetypes = { "lua" },
-        }),
       },
     })
 
