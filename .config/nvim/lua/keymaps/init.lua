@@ -135,6 +135,19 @@ if not vim.g.vscode then
     local api = require("nvim-tree.api")
     api.tree.find_file({ open = true, focus = true })
   end, { desc = "Focus current file in nvim-tree" })
+
+  -- GitHub PR review keymaps
+  vim.keymap.set("n", "<leader>pr", "<cmd>Octo pr list<CR>", { desc = "List PRs" })
+  vim.keymap.set("n", "<leader>prc", "<cmd>Octo pr create<CR>", { desc = "Create PR" })
+  vim.keymap.set("n", "<leader>prr", "<cmd>Octo review start<CR>", { desc = "Start PR review" })
+  vim.keymap.set("n", "<leader>prs", "<cmd>Octo review submit<CR>", { desc = "Submit PR review" })
+  vim.keymap.set("n", "<leader>prR", "<cmd>Octo review resume<CR>", { desc = "Resume PR review" })
+
+  -- Diffview keymaps
+  vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Open diffview" })
+  vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Close diffview" })
+  vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", { desc = "File history" })
+  vim.keymap.set("n", "<leader>dr", "<cmd>DiffviewRefresh<CR>", { desc = "Refresh diffview" })
 else
   -- tab move
   vim.keymap.set("n", "<C-h>", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
