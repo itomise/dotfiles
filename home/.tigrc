@@ -30,6 +30,9 @@ bind tree    D      ?git rm %(file)
 # x でトラッキングされていないファイルをすべて削除 (main-view)
 bind main    x      ?git clean -d -f
 
+# Y でコミットハッシュをクリップボードにコピー (main-view)
+bind main    Y      ?sh -c 'printf %(commit) | pbcopy'
+
 # x で全ての変更を取り消し (トラッキングされていないファイルを削除し、トラッキングされているファイルの変更を取り消す) (status-view)
 bind status  x      ?sh -c 'git checkout -- . && git clean -d -f'
 
