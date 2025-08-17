@@ -4,6 +4,7 @@ CONFIG_SRC_DIR := $(CURDIR)/.config
 
 install-command:
 	@command -v trash > /dev/null || brew install trash
+	@command -v btop > /dev/null || brew install btop
 
 install-config:
 	@echo "Linking directories from $(CONFIG_SRC_DIR) to $$HOME/.config"
