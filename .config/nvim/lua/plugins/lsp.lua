@@ -63,6 +63,14 @@ return {
       lspconfig.hls.setup({})
       lspconfig.fsautocomplete.setup({})
       lspconfig.terraformls.setup({})
+
+      -- Kotlin LSP setup (using stdio mode)
+      lspconfig.kotlin_language_server.setup({
+        cmd = { "kotlin-lsp", "--stdio" },
+        root_dir = util.root_pattern("build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts"),
+        filetypes = { "kotlin" },
+        settings = {}
+      })
     end,
   },
 }
