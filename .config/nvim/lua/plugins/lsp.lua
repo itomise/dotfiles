@@ -33,16 +33,15 @@ return {
       "mason-org/mason-lspconfig.nvim",
     },
     config = function()
-      local lspconfig = require("lspconfig")
       local util = require("lspconfig.util")
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config.lua_ls = {
         settings = {
           Lua = { diagnostics = { globals = { "vim" } } },
         },
-      })
+      }
 
-      lspconfig.denols.setup({
+      vim.lsp.config.denols = {
         root_dir = util.root_pattern("deno.json", "deno.jsonc"),
         root_markers = { "deno.json", "deno.jsonc", "deps.ts" },
         workspace_required = true,
@@ -50,26 +49,37 @@ return {
           lint = true,
           unstable = true,
         },
-      })
+      }
 
-      lspconfig.ts_ls.setup({
+      vim.lsp.config.ts_ls = {
         root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json"),
         root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
         workspace_required = true,
-      })
+      }
 
-      lspconfig.eslint.setup({})
-      lspconfig.pyright.setup({})
-      lspconfig.hls.setup({})
-      lspconfig.fsautocomplete.setup({})
-      lspconfig.terraformls.setup({})
+      vim.lsp.config.eslint = {}
+      vim.lsp.config.pyright = {}
+      vim.lsp.config.hls = {}
+      vim.lsp.config.fsautocomplete = {}
+      vim.lsp.config.terraformls = {}
 
-      -- Kotlin LSP setup (using stdio mode)
-      lspconfig.kotlin_language_server.setup({
+      vim.lsp.config.kotlin_language_server = {
         cmd = { "kotlin-lsp", "--stdio" },
         root_dir = util.root_pattern("build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts"),
         filetypes = { "kotlin" },
         settings = {}
+      }
+
+      vim.lsp.enable({
+        'lua_ls',
+        'denols',
+        'ts_ls',
+        'eslint',
+        'pyright',
+        'hls',
+        'fsautocomplete',
+        'terraformls',
+        'kotlin_language_server',
       })
     end,
   },
