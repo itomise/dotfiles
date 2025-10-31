@@ -33,17 +33,19 @@ return {
       "mason-org/mason-lspconfig.nvim",
     },
     config = function()
-      local util = require("lspconfig.util")
-
       vim.lsp.config.lua_ls = {
+        cmd = { "lua-language-server" },
+        filetypes = { "lua" },
+        root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
         settings = {
           Lua = { diagnostics = { globals = { "vim" } } },
         },
       }
 
       vim.lsp.config.denols = {
-        root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-        root_markers = { "deno.json", "deno.jsonc", "deps.ts" },
+        cmd = { "deno", "lsp" },
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+        root_markers = { "deno.json", "deno.jsonc" },
         workspace_required = true,
         init_options = {
           lint = true,
@@ -52,22 +54,46 @@ return {
       }
 
       vim.lsp.config.ts_ls = {
-        root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json"),
+        cmd = { "typescript-language-server", "--stdio" },
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
         root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
         workspace_required = true,
       }
 
-      vim.lsp.config.eslint = {}
-      vim.lsp.config.pyright = {}
-      vim.lsp.config.hls = {}
-      vim.lsp.config.fsautocomplete = {}
-      vim.lsp.config.terraformls = {}
+      vim.lsp.config.eslint = {
+        cmd = { "vscode-eslint-language-server", "--stdio" },
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte", "astro" },
+        root_markers = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", "package.json" },
+      }
+
+      vim.lsp.config.pyright = {
+        cmd = { "pyright-langserver", "--stdio" },
+        filetypes = { "python" },
+        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+      }
+
+      vim.lsp.config.hls = {
+        cmd = { "haskell-language-server-wrapper", "--lsp" },
+        filetypes = { "haskell", "lhaskell" },
+        root_markers = { "hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml" },
+      }
+
+      vim.lsp.config.fsautocomplete = {
+        cmd = { "fsautocomplete", "--background-service-enabled" },
+        filetypes = { "fsharp" },
+        root_markers = { "*.sln", "*.fsproj", ".git" },
+      }
+
+      vim.lsp.config.terraformls = {
+        cmd = { "terraform-ls", "serve" },
+        filetypes = { "terraform", "terraform-vars" },
+        root_markers = { ".terraform", ".git" },
+      }
 
       vim.lsp.config.kotlin_language_server = {
         cmd = { "kotlin-lsp", "--stdio" },
-        root_dir = util.root_pattern("build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts"),
         filetypes = { "kotlin" },
-        settings = {}
+        root_markers = { "build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts" },
       }
 
       vim.lsp.enable({
