@@ -56,8 +56,17 @@ return {
       vim.lsp.config.ts_ls = {
         cmd = { "typescript-language-server", "--stdio" },
         filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-        root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
         workspace_required = true,
+        root_dir = function(fname)
+          local util = vim.lsp.util
+          -- deno プロジェクト（deno.json/deno.jsonc が存在）では ts_ls を起動しない
+          local deno_root = util.root_pattern("deno.json", "deno.jsonc")(fname)
+          if deno_root then
+            return nil
+          end
+          -- deno プロジェクトでない場合は通常の root_dir 検出
+          return util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")(fname)
+        end,
       }
 
       vim.lsp.config.eslint = {
