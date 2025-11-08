@@ -21,6 +21,12 @@ vim.keymap.set("n", "<leader>*", "*''cgn")
 
 vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
 
+-- buffer
+vim.keymap.set("n", "<C-[>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<C-]>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>x", "<cmd>Bdelete<CR>", { desc = "Close buffer" })
+
+
 -- window (vertical)
 vim.keymap.set("n", "=", function()
   vim.cmd("vertical resize -5")
