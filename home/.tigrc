@@ -3,6 +3,16 @@
 # main view の左端にコミットIDを表示する
 set main-view = id date author:email-user commit-title:graph=yes,refs=yes
 
+# branch view (refs view) で日付を表示
+set refs-view = date:relative ref commit-title
+
+# refs view から remote branches (origin) を非表示にする
+set reference-format = [branch] <tag> <local-tag> hide:remote
+
+# refs view でソート順を変更するキーバインド（手動で o または O を押す必要がある）
+# o: ソートフィールドを切り替え（name -> date）
+# O: ソート順を切り替え（昇順/降順）
+
 # utf-8 文字で画面描画する (~でトグル)
 set line-graphics = utf-8
 
@@ -51,7 +61,7 @@ color  diff-chunk        black   white
 bind generic ^      ?git reset --soft HEAD^
 
 # S で stash save
-bind generic S      ?git stash push -u -m "%(prompt Enter stash comment: )"
+bind main S      ?git stash push -u -m "%(prompt Enter stash comment: )"
 
 # Y で stash pop
 bind stash   P      ?git stash pop %(stash)
@@ -90,7 +100,6 @@ bind diff    <Esc>r ?git rebase %(commit)
 # I で rebase -i
 bind main    I      ?git rebase -i %(branch)
 bind diff    I      ?git rebase -i %(branch)
-bind refs    I      ?git rebase -i %(branch)
 bind main    <Esc>i ?git rebase -i %(commit)
 bind diff    <Esc>i ?git rebase -i %(commit)
 
