@@ -26,7 +26,6 @@ vim.opt.splitbelow = true
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.opt.confirm = true
 vim.opt.swapfile = false
 
 -- コメント自動挿入を無効化
