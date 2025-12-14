@@ -28,93 +28,79 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
     },
     config = function()
-      vim.lsp.config.lua_ls = {
-        cmd = { "lua-language-server" },
-        filetypes = { "lua" },
-        root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
+      vim.lsp.config("lua_ls", {
         settings = {
           Lua = { diagnostics = { globals = { "vim" } } },
         },
-      }
+      })
 
-      vim.lsp.config.denols = {
-        cmd = { "deno", "lsp" },
-        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+      vim.lsp.config("denols", {
         root_markers = { "deno.json", "deno.jsonc" },
         workspace_required = true,
         init_options = {
           lint = true,
           unstable = true,
         },
-      }
+      })
 
-      vim.lsp.config.ts_ls = {
-        cmd = { "typescript-language-server", "--stdio" },
-        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+      vim.lsp.config("ts_ls", {
         workspace_required = true,
-        root_dir = function(fname)
-          local util = vim.lsp.util
-          -- deno プロジェクト（deno.json/deno.jsonc が存在）では ts_ls を起動しない
-          local deno_root = util.root_pattern("deno.json", "deno.jsonc")(fname)
-          if deno_root then
-            return nil
+        root_dir = function(bufnr, on_dir)
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          if bufname == "" then
+            return
           end
-          -- deno プロジェクトでない場合は通常の root_dir 検出
-          return util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")(fname)
+          local fname = vim.fs.dirname(bufname)
+          -- まず TypeScript プロジェクトの root を見つける
+          local ts_markers = vim.fs.find({ "package.json", "tsconfig.json", "jsconfig.json" }, { path = fname, upward = true })
+          if #ts_markers == 0 then
+            return
+          end
+          local ts_root = vim.fs.dirname(ts_markers[1])
+          -- deno.json が ts_root と同じかその中にある場合のみ Deno プロジェクトとみなす
+          -- (ホームディレクトリなど親にある deno.json は無視)
+          local deno_markers = vim.fs.find({ "deno.json", "deno.jsonc" }, { path = fname, upward = true })
+          if #deno_markers > 0 then
+            local deno_root = vim.fs.dirname(deno_markers[1])
+            -- deno_root が ts_root で始まる場合のみブロック (deno.json が ts プロジェクト内にある)
+            if deno_root:find(ts_root, 1, true) == 1 then
+              return
+            end
+          end
+          on_dir(ts_root)
         end,
-      }
+      })
 
-      vim.lsp.config.eslint = {
-        cmd = { "vscode-eslint-language-server", "--stdio" },
-        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte", "astro" },
-        root_markers = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", "package.json" },
-      }
+      vim.lsp.config("eslint", {
+        root_markers = { ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", "eslint.config.js", "eslint.config.mjs", "package.json" },
+      })
 
-      vim.lsp.config.pyright = {
-        cmd = { "pyright-langserver", "--stdio" },
-        filetypes = { "python" },
-        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
-      }
+      vim.lsp.config("pyright", {})
 
-      vim.lsp.config.hls = {
-        cmd = { "haskell-language-server-wrapper", "--lsp" },
-        filetypes = { "haskell", "lhaskell" },
-        root_markers = { "hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml" },
-      }
+      vim.lsp.config("hls", {})
 
-      vim.lsp.config.fsautocomplete = {
-        cmd = { "fsautocomplete", "--background-service-enabled" },
-        filetypes = { "fsharp" },
-        root_markers = { "*.sln", "*.fsproj", ".git" },
-      }
+      vim.lsp.config("fsautocomplete", {})
 
-      vim.lsp.config.terraformls = {
-        cmd = { "terraform-ls", "serve" },
-        filetypes = { "terraform", "terraform-vars" },
-        root_markers = { ".terraform", ".git" },
-      }
+      vim.lsp.config("terraformls", {})
 
-      vim.lsp.config.kotlin_language_server = {
-        cmd = { "kotlin-lsp", "--stdio" },
-        filetypes = { "kotlin" },
-        root_markers = { "build.gradle", "build.gradle.kts", "settings.gradle", "settings.gradle.kts" },
-      }
+      vim.lsp.config("kotlin_language_server", {})
 
       vim.lsp.enable({
-        'lua_ls',
-        'denols',
-        'ts_ls',
-        'eslint',
-        'pyright',
-        'hls',
-        'fsautocomplete',
-        'terraformls',
-        'kotlin_language_server',
+        "lua_ls",
+        "denols",
+        "ts_ls",
+        "eslint",
+        "pyright",
+        "hls",
+        "fsautocomplete",
+        "terraformls",
+        "kotlin_language_server",
       })
     end,
   },
