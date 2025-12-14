@@ -89,7 +89,11 @@ return {
 
       vim.lsp.config("terraformls", {})
 
-      vim.lsp.config("kotlin_language_server", {})
+      vim.lsp.config("kotlin_lsp", {
+        cmd = { "kotlin-lsp", "--stdio" },
+        filetypes = { "kotlin" },
+        root_markers = { "settings.gradle", "settings.gradle.kts", "build.gradle", "build.gradle.kts", "pom.xml", ".git" },
+      })
 
       vim.lsp.enable({
         "lua_ls",
@@ -100,7 +104,7 @@ return {
         "hls",
         "fsautocomplete",
         "terraformls",
-        "kotlin_language_server",
+        "kotlin_lsp",
       })
     end,
   },
