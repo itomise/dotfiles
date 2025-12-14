@@ -15,13 +15,13 @@
 	<key>AITermAPI</key>
 	<integer>2</integer>
 	<key>AIVectorStore</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>AiMaxTokens</key>
-	<integer>1000000</integer>
+	<integer>400000</integer>
 	<key>AiModel</key>
-	<string>gpt-4.1</string>
+	<string>gpt-5.1</string>
 	<key>AiResponseMaxTokens</key>
-	<integer>32768</integer>
+	<integer>128000</integer>
 	<key>AitermURL</key>
 	<string>https://api.openai.com/v1/responses</string>
 	<key>BrowserPluginPathHint</key>
@@ -33,7 +33,7 @@
 	<key>Default Bookmark Guid</key>
 	<string>67389C45-6E27-40AD-BFB1-C134CE4CB8E7</string>
 	<key>Default Browser Profile Guid</key>
-	<string>478B8534-F0A7-4C75-8141-F1D3C4078338</string>
+	<string>3BBFDBAA-ABA4-4D75-A6D6-F67BD231AB15</string>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
