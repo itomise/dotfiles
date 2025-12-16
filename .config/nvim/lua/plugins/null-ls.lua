@@ -41,9 +41,21 @@ return {
       },
     })
 
-    -- 保存時に自動フォーマット
+    -- 保存時に自動フォーマット（フォーマッターがある場合のみ）
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function(args)
+        local clients = vim.lsp.get_clients({ bufnr = args.buf })
+        local has_formatter = false
+        for _, client in ipairs(clients) do
+          if client.supports_method("textDocument/formatting") then
+            has_formatter = true
+            break
+          end
+        end
+        if not has_formatter then
+          return
+        end
+
         pcall(vim.cmd, "silent undojoin")
 
         vim.lsp.buf.format({
