@@ -16,7 +16,6 @@ export VISUAL=vim
 export EDITOR=vim
 
 # prompt (pure) https://github.com/sindresorhus/pure
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:git:stash show yes
 zstyle :prompt:pure:git:fetch only_upstream yes
