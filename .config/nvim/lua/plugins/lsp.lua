@@ -58,7 +58,8 @@ return {
           end
           local fname = vim.fs.dirname(bufname)
           -- まず TypeScript プロジェクトの root を見つける
-          local ts_markers = vim.fs.find({ "package.json", "tsconfig.json", "jsconfig.json" }, { path = fname, upward = true })
+          local ts_markers = vim.fs.find({ "package.json", "tsconfig.json", "jsconfig.json" },
+            { path = fname, upward = true })
           if #ts_markers == 0 then
             return
           end
