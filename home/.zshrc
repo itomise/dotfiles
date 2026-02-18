@@ -13,9 +13,9 @@ alias gsp='git stash pop'
 alias v='vim .'
 
 # github cli
-export GIT_EDITOR=vim
-export VISUAL=vim
-export EDITOR=vim
+export GIT_EDITOR=nvim
+export VISUAL=nvim
+export EDITOR=nvim
 
 # prompt (pure) https://github.com/sindresorhus/pure
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
