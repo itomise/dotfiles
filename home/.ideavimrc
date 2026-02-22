@@ -36,6 +36,9 @@ Plug 'tpope/vim-commentary'
 
 source ~/.vimrc
 
+" yank時にシステムクリップボードへコピー
+set clipboard+=unnamedplus,ideaput
+
 nnoremap <Leader>ev :<C-u>vsplit ~/.ideavimrc<CR>
 nnoremap <Leader>sv :<C-u>source ~/.ideavimrc<CR>
 
