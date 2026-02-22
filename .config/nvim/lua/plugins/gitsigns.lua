@@ -53,6 +53,32 @@ return {
           map("n", "<leader>gD", function()
             gs.diffthis("~")
           end, { desc = "Diff this ~" })
+          map("n", "<leader>gP", function()
+            local line = vim.fn.line(".")
+            local file = vim.fn.expand("%:p")
+            local result = vim.fn.system(
+              "git blame -l -L " .. line .. "," .. line .. " -- " .. vim.fn.shellescape(file)
+            )
+            local hash = result:match("^%^?(%x+)")
+            if not hash or hash:match("^0+$") then
+              vim.notify("Not committed yet", vim.log.levels.WARN)
+              return
+            end
+            vim.fn.jobstart(
+              { "gh", "api", "repos/{owner}/{repo}/commits/" .. hash .. "/pulls", "--jq", ".[0].html_url" },
+              {
+                stdout_buffered = true,
+                on_stdout = function(_, data)
+                  local url = vim.trim(table.concat(data, ""))
+                  if url == "" or url == "null" then
+                    vim.notify("No PR found for " .. hash:sub(1, 8), vim.log.levels.WARN)
+                    return
+                  end
+                  vim.ui.open(url)
+                end,
+              }
+            )
+          end, { desc = "Open PR for blame" })
         end,
         current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
         current_line_blame_opts = {
