@@ -6,6 +6,20 @@ wezterm.on("gui-startup", function(cmd)
   window:gui_window():toggle_fullscreen()
 end)
 
+local function tab_title(tab_info)
+  local title = tab_info.tab_title
+  if title and #title > 0 then
+    return title
+  end
+  return tab_info.active_pane.title
+end
+
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+  local title = tab_title(tab)
+  title = wezterm.truncate_right(title, max_width - 2)
+  return ' ' .. title .. ' '
+end)
+
 wezterm.on('toggle-opacity', function(window)
   local overrides = window:get_config_overrides() or {}
   if overrides.window_background_opacity == 0.5 then
@@ -68,6 +82,18 @@ local keys = {
     key = 't',
     mods = 'CMD|CTRL',
     action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 't',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.PromptInputLine {
+      description = 'Set tab title',
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
   },
   -- FIXME: for claude code new line
   {
