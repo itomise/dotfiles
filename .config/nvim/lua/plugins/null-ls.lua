@@ -41,6 +41,23 @@ return {
       },
     })
 
+    -- Go: 保存時に import を自動整理
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.go",
+      callback = function(args)
+        local params = vim.lsp.util.make_range_params()
+        params.context = { only = { "source.organizeImports" } }
+        local result = vim.lsp.buf_request_sync(args.buf, "textDocument/codeAction", params, 3000)
+        for _, res in pairs(result or {}) do
+          for _, action in pairs(res.result or {}) do
+            if action.edit then
+              vim.lsp.util.apply_workspace_edit(action.edit, "utf-8")
+            end
+          end
+        end
+      end,
+    })
+
     -- 保存時に自動フォーマット（フォーマッターがある場合のみ）
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function(args)
