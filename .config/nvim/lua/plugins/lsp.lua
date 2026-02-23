@@ -20,6 +20,7 @@ return {
         "hls",
         "fsautocomplete",
         "terraformls",
+        "gopls",
       },
       automatic_installation = true,
       automatic_enable = false, -- 個別設定するので自動で有効化しない
@@ -90,6 +91,20 @@ return {
 
       vim.lsp.config("terraformls", {})
 
+      vim.lsp.config("gopls", {
+        root_markers = { "go.mod", "go.work", ".git" },
+        settings = {
+          gopls = {
+            gofumpt = true,
+            analyses = {
+              unusedparams = true,
+              unusedvariable = true,
+            },
+            staticcheck = true,
+          },
+        },
+      })
+
       vim.lsp.config("kotlin_lsp", {
         cmd = { "kotlin-lsp", "--stdio" },
         filetypes = { "kotlin" },
@@ -106,6 +121,7 @@ return {
         "fsautocomplete",
         "terraformls",
         "kotlin_lsp",
+        "gopls",
       })
     end,
   },
