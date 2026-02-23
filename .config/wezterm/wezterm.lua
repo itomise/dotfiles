@@ -124,7 +124,8 @@ local keys = {
 }
 
 return {
-  color_scheme = 'Tokyo Night Storm',
+  -- tried: Dracula+, Neutron, ayu
+  color_scheme = 'Circus (base16)',
   window_background_opacity = 1.0,
   text_background_opacity = 1.0,
   font_size = 12.0,
