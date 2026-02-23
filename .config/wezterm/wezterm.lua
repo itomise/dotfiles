@@ -95,6 +95,26 @@ local keys = {
       end),
     },
   },
+  {
+    key = 'LeftArrow',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Left', 5 },
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Right', 5 },
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Up', 5 },
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.AdjustPaneSize { 'Down', 5 },
+  },
   -- FIXME: for claude code new line
   {
     key = 'Enter',
