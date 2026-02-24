@@ -10,6 +10,14 @@ return {
     },
     config = function()
       require("noice").setup({
+        views = {
+          split = {
+            enter = true,
+          },
+        },
+        presets = {
+          cmdline_output_to_split = true,
+        },
         routes = {
           {
             filter = {
@@ -27,6 +35,12 @@ return {
             opts = { skip = true },
           },
         },
+      })
+
+      vim.api.nvim_create_autocmd("CmdlineEnter", {
+        callback = function()
+          require("noice").cmd("dismiss")
+        end,
       })
     end,
   },
