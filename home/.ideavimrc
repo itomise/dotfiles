@@ -50,6 +50,12 @@ set noerrorbells
 
 set NERDTree
 
+" jj で Insert mode から Normal mode に戻る
+inoremap jj <ESC>
+inoremap っj <ESC>
+inoremap っっj <ESC>
+inoremap っっっj <ESC>
+
 " redo
 nnoremap <C-r> <C-r>
 
