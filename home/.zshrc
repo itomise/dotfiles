@@ -1,22 +1,23 @@
-# alias
+# aliases: editor
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim .'
 alias nv='nvim'
 
+# aliases: navigation
 alias c='clear'
 alias o='open'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias mkd='mkdir -p'
 
-# ls (eza)
+# aliases: ls (eza)
 alias ls='eza -a'
 alias ll='eza -hlA'
 alias la='eza -hlA'
 alias lt='eza -a --tree'
 
-# tools
+# aliases: tools
 alias br='brew'
 alias bri='brew install'
 alias lzg='lazygit'
@@ -24,7 +25,7 @@ alias lzd='lazydocker'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 
-# git
+# aliases: git
 alias g='git'
 alias ga='git add'
 alias ga.='git add .'
@@ -44,29 +45,28 @@ alias gss='git stash push -u'
 alias gsp='git stash pop'
 alias gpt='git push --tags'
 
-# docker
+# aliases: docker
 alias dc='docker compose'
 alias dcu='docker compose up'
 alias dcub='docker compose up --build'
 alias dcd='docker compose down'
 alias dcr='docker compose restart'
 
-# github cli
+# aliases: github cli
 alias ghp='gh poi'
 
-# bun
+# aliases: bun
 alias bunb='bun --bun'
 alias bunbx='bunx --bun'
 
-# deno
+# aliases: deno
 alias dt='deno task'
 
-# claude
+# aliases: claude
 alias cl='claude'
 alias cld='claude --dangerously-skip-permissions'
 alias cldc='claude --dangerously-skip-permissions --continue'
 
-# github cli
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
