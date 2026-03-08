@@ -71,6 +71,17 @@ export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
 
+# completions
+_zsh_comp_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions"
+[[ -d $_zsh_comp_dir ]] || mkdir -p "$_zsh_comp_dir"
+if [[ ! -f "$_zsh_comp_dir/_docker" ]]; then
+  docker completion zsh > "$_zsh_comp_dir/_docker" 2>/dev/null
+fi
+if [[ ! -f "$_zsh_comp_dir/_npm" ]]; then
+  npm completion > "$_zsh_comp_dir/_npm" 2>/dev/null
+fi
+fpath=("$_zsh_comp_dir" $fpath)
+
 # prompt (pure) https://github.com/sindresorhus/pure
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
@@ -131,6 +142,14 @@ setopt noflowcontrol
 bindkey '^q' fzf-cdr
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# compinit (.zshrc.local の fpath 追加後に実行)
+autoload -Uz compinit
+if [[ ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 # bun completions
 [ -s "/Users/ryota.ito/.bun/_bun" ] && source "/Users/ryota.ito/.bun/_bun"

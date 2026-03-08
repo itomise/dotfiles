@@ -1,5 +1,30 @@
-install: install-command install-config install-dotfiles
+install: install-command install-config install-dotfiles install-hooks
 
+SHELL := /bin/zsh
+
+# zsh startup time threshold in milliseconds
+ZSH_STARTUP_THRESHOLD_MS := 200
+
+test: test-zsh-startup
+
+test-zsh-startup:
+	@echo "Measuring zsh startup time (5 runs)..."
+	@total=0; \
+	for i in 1 2 3 4 5; do \
+	  ms=$$({ /usr/bin/time zsh -i -c exit; } 2>&1 | awk '{printf "%d", $$1 * 1000}'); \
+	  total=$$((total + ms)); \
+	  echo "  run $$i: $${ms}ms"; \
+	done; \
+	avg=$$((total / 5)); \
+	echo "  avg: $${avg}ms (threshold: $(ZSH_STARTUP_THRESHOLD_MS)ms)"; \
+	if [ $$avg -gt $(ZSH_STARTUP_THRESHOLD_MS) ]; then \
+	  echo "FAIL: zsh startup too slow ($${avg}ms > $(ZSH_STARTUP_THRESHOLD_MS)ms)"; \
+	  exit 1; \
+	else \
+	  echo "PASS"; \
+	fi
+
+HOOKS_DIR := $(CURDIR)/hooks
 CONFIG_SRC_DIR := $(CURDIR)/.config
 
 install-command:
@@ -34,6 +59,16 @@ install-config:
 	  fi; \
 	  echo "→ Linking $$target -> $$dir"; \
 	  ln -s "$$dir" "$$target"; \
+	done
+
+install-hooks:
+	@echo "Installing git hooks"
+	@for hook in $$(find $(HOOKS_DIR) -mindepth 1 -maxdepth 1 -type f); do \
+	  name=$$(basename $$hook); \
+	  target=".git/hooks/$$name"; \
+	  cp "$$hook" "$$target"; \
+	  chmod +x "$$target"; \
+	  echo "-> $$target"; \
 	done
 
 DOTFILES := $(CURDIR)/home
