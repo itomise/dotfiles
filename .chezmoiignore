@@ -1,4 +1,5 @@
 README.md
 Brewfile
-Makefile
+install.sh
 hooks
+tests

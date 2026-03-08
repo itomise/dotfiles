@@ -1,2 +1,2 @@
 #!/bin/sh
-make test
+./tests/test-zsh-startup.sh

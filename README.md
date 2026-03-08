@@ -1,5 +1,5 @@
 # dotfiles
 
 ```
-make install
+./install.sh
 ```

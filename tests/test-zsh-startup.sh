@@ -13,7 +13,8 @@ done
 avg=$((total / 5))
 echo "  avg: ${avg}ms (threshold: ${ZSH_STARTUP_THRESHOLD_MS}ms)"
 if [ "$avg" -gt "$ZSH_STARTUP_THRESHOLD_MS" ]; then
-  echo "WARN: zsh startup is slow (${avg}ms > ${ZSH_STARTUP_THRESHOLD_MS}ms)"
+  echo "FAIL: zsh startup too slow (${avg}ms > ${ZSH_STARTUP_THRESHOLD_MS}ms)"
+  exit 1
 else
   echo "PASS"
 fi
