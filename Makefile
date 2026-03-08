@@ -9,6 +9,7 @@ install-command:
 	@command -v asdf > /dev/null || brew install asdf
 	@command -v gh > /dev/null || brew install gh
 	@command -v tig > /dev/null || brew install tig
+	@command -v eza > /dev/null || brew install eza
 	@brew list font-0xproto-nerd-font > /dev/null 2>&1 || brew install font-0xproto-nerd-font
 
 install-config:

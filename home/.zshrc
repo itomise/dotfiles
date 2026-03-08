@@ -1,16 +1,70 @@
 # alias
 alias vim='nvim'
 alias vi='nvim'
-alias g='git'
-alias gs='git status'
-alias gsw='git switch'
-alias gp='git push'
+alias v='nvim .'
+alias nv='nvim'
+
 alias c='clear'
+alias o='open'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias mkd='mkdir -p'
+
+# ls (eza)
+alias ls='eza -a'
+alias ll='eza -hlA'
+alias la='eza -hlA'
+alias lt='eza -a --tree'
+
+# tools
+alias br='brew'
+alias bri='brew install'
+alias lzg='lazygit'
+alias lzd='lazydocker'
+alias pbc='pbcopy'
+alias pbp='pbpaste'
+
+# git
+alias g='git'
+alias ga='git add'
+alias ga.='git add .'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gcl='git clone'
+alias gco='git checkout'
+alias gp='git push'
+alias gpo='git push origin'
+alias gpf='git push --force-with-lease'
+alias gpl='git pull'
+alias gf='git fetch'
+alias gs='git status'
+alias gsw='git switch'
+alias gr='git rebase'
 alias gss='git stash push -u'
 alias gsp='git stash pop'
-alias v='vim .'
+alias gpt='git push --tags'
+
+# docker
+alias dc='docker compose'
+alias dcu='docker compose up'
+alias dcub='docker compose up --build'
+alias dcd='docker compose down'
+alias dcr='docker compose restart'
+
+# github cli
+alias ghp='gh poi'
+
+# bun
+alias bunb='bun --bun'
+alias bunbx='bunx --bun'
+
+# deno
+alias dt='deno task'
+
+# claude
+alias cl='claude'
+alias cld='claude --dangerously-skip-permissions'
+alias cldc='claude --dangerously-skip-permissions --continue'
 
 # github cli
 export GIT_EDITOR=nvim
