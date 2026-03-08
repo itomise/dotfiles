@@ -64,3 +64,4 @@ nmap gi <Action>(GotoImplementation)
 
 " ctrl + d でページダウン
 nnoremap <C-d> <C-d>
+set ideajoin
