@@ -17,6 +17,16 @@ end
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
   local title = tab_title(tab)
   title = wezterm.truncate_right(title, max_width - 2)
+
+  local tab_color = tab.active_pane.user_vars.TAB_COLOR
+  if tab_color and #tab_color > 0 then
+    return {
+      { Background = { Color = tab_color } },
+      { Foreground = { Color = '#4D9DE5' } },
+      { Text = ' ' .. title .. ' ' },
+    }
+  end
+
   return ' ' .. title .. ' '
 end)
 
