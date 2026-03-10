@@ -1,0 +1,11 @@
+encryption = "age"
+
+[age]
+  identity = "~/.config/chezmoi/keys/age.key"
+  recipient = "age1xhn4nnjxgh8qz9fst0jvn6fuf7g7ysg8pqhgs7lytgqprqed5cvsqk3803"
+
+[data]
+  gitEmail = {{ promptStringOnce . "gitEmail" "Git email (personal)" | quote }}
+  gitName = {{ promptStringOnce . "gitName" "Git name (personal)" | quote }}
+  gitWorkEmail = {{ promptStringOnce . "gitWorkEmail" "Git email (work)" | quote }}
+  gitWorkName = {{ promptStringOnce . "gitWorkName" "Git name (work)" | quote }}

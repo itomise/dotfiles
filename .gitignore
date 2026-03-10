@@ -1,6 +1,7 @@
 lazy-lock.json
 todo.md
 .DS_Store
+*.key
 iterm2/iTermBrowserPlugin.app/
 **/git/config.local
 **/git/config.work
