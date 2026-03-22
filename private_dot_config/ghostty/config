@@ -1,0 +1,74 @@
+# Font
+font-family = 0xProto Nerd Font
+font-size = 12
+
+# Theme: Circus (base16)
+background = #191919
+foreground = #a7a7a7
+cursor-color = #a7a7a7
+selection-background = #303030
+selection-foreground = #a7a7a7
+
+# Normal colors
+palette = 0=#191919
+palette = 1=#dc657d
+palette = 2=#84b97c
+palette = 3=#c3ba63
+palette = 4=#639ee4
+palette = 5=#b888e2
+palette = 6=#4bb1a7
+palette = 7=#a7a7a7
+
+# Bright colors
+palette = 8=#5f5a60
+palette = 9=#dc657d
+palette = 10=#84b97c
+palette = 11=#c3ba63
+palette = 12=#639ee4
+palette = 13=#b888e2
+palette = 14=#4bb1a7
+palette = 15=#ffffff
+
+# Window
+window-padding-x = 0
+window-padding-y = 0
+macos-titlebar-style = tabs
+window-decoration = true
+window-theme = ghostty
+
+# Fullscreen on startup
+fullscreen = true
+
+# Background opacity
+background-opacity = 1.0
+
+# Keybindings
+# Close pane: Cmd+W
+keybind = super+w=close_surface
+
+# Split pane horizontal: Cmd+D
+keybind = super+d=new_split:right
+
+# Split pane vertical: Cmd+Shift+D
+keybind = super+shift+d=new_split:down
+
+# Navigate panes
+keybind = super+left_bracket=goto_split:left
+keybind = super+right_bracket=goto_split:right
+keybind = super+shift+left_bracket=goto_split:top
+keybind = super+shift+right_bracket=goto_split:bottom
+
+# Toggle pane zoom: Cmd+Shift+Enter
+keybind = super+shift+enter=toggle_split_zoom
+
+# Toggle fullscreen: Cmd+Shift+F
+keybind = super+shift+f=toggle_fullscreen
+
+# Resize panes: Cmd+Ctrl+Arrow
+keybind = super+ctrl+left=resize_split:left,20
+keybind = super+ctrl+right=resize_split:right,20
+keybind = super+ctrl+up=resize_split:up,20
+keybind = super+ctrl+down=resize_split:down,20
+
+# Shift+Enter for Claude Code newline
+keybind = shift+enter=text:\x1b[13;2u
