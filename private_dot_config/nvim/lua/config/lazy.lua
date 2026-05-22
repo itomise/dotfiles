@@ -20,13 +20,12 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  --   install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
 }, {
-
+  defaults = {
+    -- Pin all plugins to the commit recorded in lazy-lock.json.
+    -- :Lazy update will skip pinned plugins; use :Lazy update <name> to bump one explicitly.
+    pin = true,
+  },
   ui = {
     icons = {
       cmd = "⌘",
@@ -45,8 +44,10 @@ require("lazy").setup({
     },
   },
   checker = {
-    -- automatically check for plugin updates
-    enabled = true,
+    enabled = false,
+  },
+  change_detection = {
+    notify = false,
   },
   diff = {
     cmd = "delta",
